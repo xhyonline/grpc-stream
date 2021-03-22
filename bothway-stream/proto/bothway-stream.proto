@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package client_stream;
+
+option go_package = "github.com/xhyonline/grpc-stream/bothway-stream/gen";
+
+service BothWayStreamServer {
+  // 请注意这是一个双向流标识
+  rpc DemoMethod (stream DemoParma) returns (stream DemoResponse) {}
+}
+
+// DemoParma 示例参数
+message DemoParma{
+    string Name = 1;
+}
+
+// DemoResponse 示例响应
+message DemoResponse{
+  string Message = 1;
+}

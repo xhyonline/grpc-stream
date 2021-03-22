@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package client_stream;
+
+option go_package = "github.com/xhyonline/grpc-stream/client-stream/gen";
+
+service ClientStreamServer {
+  // 请注意这个方法,请求入参有一个 stream 关键字
+  // 注意这里我们只标记了请求是流式的,但是响应还是正常形式的
+  rpc DemoMethod (stream DemoParma) returns (DemoResponse) {}
+}
+
+// DemoParma 示例参数
+message DemoParma{
+    string Name = 1;
+}
+
+// DemoResponse 示例响应
+message DemoResponse{
+  string Message = 1;
+}
